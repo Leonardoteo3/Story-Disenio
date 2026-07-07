@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso - Seguridad Operacional</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-container">
+        <!-- Sidebar / Módulo de Avatar -->
+        <aside class="sidebar">
+            <div class="avatar-wrapper">
+                <svg class="progress-ring" width="140" height="140">
+                    <circle class="progress-ring__background" stroke="rgba(255,255,255,0.15)" stroke-width="8" fill="transparent" r="64" cx="70" cy="70"/>
+                    <circle class="progress-ring__circle" stroke="#ffb800" stroke-width="8" fill="transparent" r="64" cx="70" cy="70"/>
+                </svg>
+                <!-- Aquí se carga la imagen desde la carpeta avatar -->
+                <img src="avatar/avatar.png" alt="Avatar del usuario" class="avatar-image">
+            </div>
+            <div class="progress-text">
+                Paso <span id="current-step">1</span> de <span id="total-steps">3</span>
+            </div>
+        </aside>
+
+        <!-- Área Principal (Aprox. 70% del espacio visual total) -->
+        <main class="content-area">
+            <!-- Panel izquierdo: Imagen -->
+            <div class="glass-panel image-panel">
+                <img id="step-image" src="fotos/woman-airport-service-agent-with-passport-helping-traveler-check-terminal-counter-female-passenger-assistant-with-smile-travel-security-immigration-documents-airline-control.jpg" alt="Agente de servicio en el aeropuerto">
+            </div>
+            
+            <!-- Panel derecho: Texto y controles -->
+            <div class="glass-panel text-panel">
+                <p id="step-text">
+                    Las compañías aéreas marcan una serie de procedimientos para atender sus aviones que cumplen con lo establecido por las organizaciones en cuanto a la seguridad operacional.
+                </p>
+                
+                <div class="navigation-controls">
+                    <button id="btn-prev" class="nav-btn" disabled>Anterior</button>
+                    <button id="btn-next" class="nav-btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

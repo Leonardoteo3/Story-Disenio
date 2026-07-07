@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe Display Pro', 'Segoe Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-image: url('fondo/magnific_0pRmdObTfW.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 400;
+}
+
+/* Contenedor principal con efecto Glassmorphism */
+.glass-container {
+    width: 90vw;
+    height: 85vh;
+    max-width: 1400px;
+    background: rgba(30, 30, 35, 0.4); /* Fondo muy oscuro y translúcido */
+    backdrop-filter: blur(15px); /* Desenfoque de cristal */
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde suave */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Sombra flotante */
+    display: flex;
+    padding: 25px;
+    gap: 25px;
+}
+
+/* Menú lateral (Avatar) */
+.sidebar {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Imagen del avatar (Se recorta en círculo) */
+.avatar-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+}
+
+/* Barra de progreso circular SVG */
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transform: rotate(-90deg); /* Para que empiece desde arriba (las 12 hrs) */
+}
+
+.progress-ring__circle {
+    stroke-dasharray: 402.12; /* 2 * PI * radio (64) = ~402 */
+    stroke-dashoffset: 402.12; /* Inicialmente vacía */
+    transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    stroke-linecap: round; /* Bordes redondeados en la línea */
+}
+
+.progress-text {
+    margin-top: 25px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Área de contenido (El 70% solicitado) */
+.content-area {
+    width: 75%;
+    display: flex;
+    gap: 25px;
+}
+
+/* Paneles internos estilo Bento */
+.glass-panel {
+    background: rgba(20, 20, 25, 0.4); /* Cristal interior más oscuro */
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.02);
+}
+
+/* Sección de la imagen */
+.image-panel {
+    flex: 1.2;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
+
+.image-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: opacity 0.4s ease;
+}
+
+/* Sección del texto */
+.text-panel {
+    flex: 1;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#step-text {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: auto; 
+    text-align: left;
+    transition: opacity 0.4s ease;
+    font-weight: 400;
+}
+
+/* Controles de navegación */
+.navigation-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+/* Botones Base */
+.nav-btn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición general */
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+/* Estado Deshabilitado */
+.nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Animación de Clic (Efecto físico de presionar) */
+.nav-btn:not(:disabled):active {
+    transform: scale(0.92);
+}
+
+/* Botón Siguiente Destacado */
+.btn-primary {
+    background: rgba(255, 184, 0, 0.85); /* Color de acento estilo inspiración */
+    color: #000;
+    border: 1px solid rgba(255, 184, 0, 1);
+    animation: pulse 2s infinite; /* Animación constante en bucle */
+}
+
+.btn-primary:not(:disabled):hover {
+    background: rgba(255, 184, 0, 1);
+    box-shadow: 0 0 20px rgba(255, 184, 0, 0.5);
+}
+
+/* Animación en bucle del botón siguiente */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 184, 0, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 18px rgba(255, 184, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 184, 0, 0);
+    }
+}
