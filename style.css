@@ -29,11 +29,11 @@ body {
     border-radius: 40px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
-    display: grid;
-    grid-template-columns: 1.6fr 1fr; /* Columna Izquierda más ancha que la Derecha */
+    display: flex;
+    flex-direction: column; /* boceto_d: fila de cabecera arriba + fila principal abajo */
     gap: 25px;
     padding: 30px;
-    position: relative; /* Clave para que el botón "Anterior" flote respecto a este contenedor */
+    position: relative;
 }
 
 /* Paneles internos estilo Bento Glass */
@@ -45,18 +45,21 @@ body {
     transition: opacity 0.4s ease;
 }
 
-/* ================= COLUMNA IZQUIERDA ================= */
-.left-column {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-/* Fila Superior (Avatar + Título) */
+/* Fila Superior (Avatar + Título a todo el ancho, boceto_d) */
 .header-row {
     display: flex;
     gap: 25px;
     height: 160px; /* Altura fija para la parte superior */
+    flex-shrink: 0;
+}
+
+/* Fila Principal (Texto | Imagen+Botones, boceto_d ~2.25:1) */
+.main-row {
+    display: grid;
+    grid-template-columns: 2.25fr 1fr;
+    gap: 25px;
+    flex: 1;
+    min-height: 0;
 }
 
 /* Nuevo Avatar estilo "Squircle" (Rectángulo redondeado) */
@@ -142,12 +145,15 @@ body {
 /* ================= COLUMNA DERECHA ================= */
 .right-column {
     display: flex;
-    height: 100%;
+    flex-direction: column;
+    gap: 25px;
+    min-height: 0;
 }
 
 /* Panel de Imagen */
 .image-panel {
-    flex-grow: 1;
+    flex: 1;
+    min-height: 0;
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -177,14 +183,18 @@ body {
     transform: scale(0.95);
 }
 
-/* Botón Siguiente Flotante (esquina inferior derecha, medidas de boceto_c) */
-.floating-next {
-    position: absolute;
-    right: -9px; /* Sobresale apenas hacia afuera, según boceto_c */
-    bottom: 5px; /* Ya no sobresale hacia abajo en boceto_c */
-    z-index: 5;
-    width: 166px;
-    height: 77px;
+/* Fila de Botones dentro del contenedor (boceto_d) */
+.nav-row {
+    display: flex;
+    gap: 25px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+/* Botón Siguiente (ancho, junto al anterior, boceto_d) */
+.nav-next {
+    flex: 1;
+    height: 100%;
     padding: 0 28px;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -193,7 +203,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    border-radius: 35px;
+    border-radius: 26px;
     border: 1px solid rgba(255, 184, 0, 0.6);
     background: rgba(255, 184, 0, 0.9);
     color: #000;
@@ -201,29 +211,26 @@ body {
     backdrop-filter: blur(10px);
 }
 
-.floating-next:hover {
+.nav-next:hover {
     background: rgba(255, 184, 0, 1);
 }
 
-.floating-next.finish-btn {
+.nav-next.finish-btn {
     background: rgba(46, 204, 113, 0.9);
     border-color: rgba(46, 204, 113, 1);
     box-shadow: 0 10px 30px rgba(46, 204, 113, 0.4);
     animation: none;
 }
 
-.floating-next.finish-btn .arrow {
+.nav-next.finish-btn .arrow {
     display: none;
 }
 
-/* Botón Anterior Flotante (esquina superior izquierda, ovalo vertical solo icono, medidas de boceto_c) */
-.floating-prev {
-    position: absolute;
-    left: -15px; /* Sobresale hacia afuera, según boceto_c */
-    top: -11px;
-    z-index: 5;
-    width: 52px;
-    height: 71px;
+/* Botón Anterior (cuadrado solo ícono, junto al siguiente, boceto_d) */
+.nav-prev {
+    width: 80px;
+    height: 100%;
+    flex-shrink: 0;
     padding: 0;
     font-size: 1.4rem;
     display: flex;
@@ -235,7 +242,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
 
-    /* Estado inicial invisible */
+    /* Estado inicial invisible (ocupa su hueco, aparece con retardo) */
     opacity: 0;
     pointer-events: none;
     transform: translateX(-20px);
@@ -246,20 +253,20 @@ body {
                 box-shadow 0.25s ease;
 }
 
-.floating-prev:hover {
+.nav-prev:hover {
     background: rgba(50, 50, 55, 0.9);
     border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0 12px 34px rgba(255, 184, 0, 0.35), 0 10px 30px rgba(0, 0, 0, 0.5);
     transform: translateX(0) scale(1.12);
 }
 
-.floating-prev:active {
+.nav-prev:active {
     transform: translateX(0) scale(0.86);
     transition-duration: 0.12s;
 }
 
 /* Clase para la animación retardada */
-.floating-prev.show-animated {
+.nav-prev.show-animated {
     animation: floatIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     pointer-events: auto;
 }
