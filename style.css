@@ -177,19 +177,22 @@ body {
     transform: scale(0.95);
 }
 
-/* Botón Siguiente Flotante (esquina inferior derecha, sobresaliendo) */
+/* Botón Siguiente Flotante (esquina inferior derecha, medidas de boceto_b) */
 .floating-next {
     position: absolute;
-    right: -35px; /* Sobresale hacia afuera */
-    bottom: 50px;
+    right: -19px; /* Sobresale hacia afuera, según boceto_b */
+    bottom: -14px;
     z-index: 5;
-    padding: 20px 35px;
-    font-size: 1.3rem;
+    width: 173px;
+    height: 89px;
+    padding: 0 28px;
+    font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 10px;
     border-radius: 35px;
     border: 1px solid rgba(255, 184, 0, 0.6);
     background: rgba(255, 184, 0, 0.9);
@@ -213,17 +216,19 @@ body {
     display: none;
 }
 
-/* Botón Anterior Flotante (esquina superior izquierda, sobresaliendo) */
+/* Botón Anterior Flotante (esquina superior izquierda, solo ícono, medidas de boceto_b) */
 .floating-prev {
     position: absolute;
-    left: -35px; /* Sobresale hacia afuera */
-    top: 50px;
+    left: -24px; /* Sobresale hacia afuera, según boceto_b */
+    top: -11px;
     z-index: 5;
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    width: 120px;
+    height: 95px;
+    padding: 0;
+    font-size: 1.8rem;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
     border-radius: 35px;
     background: rgba(30, 30, 35, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.2);
