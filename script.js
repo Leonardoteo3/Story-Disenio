@@ -26,7 +26,6 @@ const textElement = document.getElementById('step-text');
 const imageElement = document.getElementById('step-image');
 const btnPrev = document.getElementById('btn-prev');
 const btnNext = document.getElementById('btn-next');
-const btnNextLabel = document.getElementById('btn-next-label');
 const currentStepText = document.getElementById('current-step');
 const totalStepsText = document.getElementById('total-steps');
 
@@ -69,11 +68,11 @@ function updateUI() {
 
         // 5. Configurar Botón Siguiente
         if (currentIndex === totalSteps - 1) {
-            btnNextLabel.textContent = "Finalizar";
+            btnNext.textContent = "Finalizar";
             btnNext.classList.remove('pulse-anim');
             btnNext.classList.add('finish-btn');
         } else {
-            btnNextLabel.textContent = "Siguiente";
+            btnNext.textContent = "Siguiente";
             btnNext.classList.add('pulse-anim');
             btnNext.classList.remove('finish-btn');
         }
