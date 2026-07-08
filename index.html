@@ -8,40 +8,53 @@
 </head>
 <body>
     <div class="glass-container">
-        <!-- Sidebar / Módulo de Avatar -->
-        <aside class="sidebar">
-            <div class="avatar-wrapper">
-                <svg class="progress-ring" width="140" height="140">
-                    <circle class="progress-ring__background" stroke="rgba(255,255,255,0.15)" stroke-width="8" fill="transparent" r="64" cx="70" cy="70"/>
-                    <circle class="progress-ring__circle" stroke="#ffb800" stroke-width="8" fill="transparent" r="64" cx="70" cy="70"/>
-                </svg>
-                <!-- Aquí se carga la imagen desde la carpeta avatar -->
-                <img src="avatar/avatar.png" alt="Avatar del usuario" class="avatar-image">
-            </div>
-            <div class="progress-text">
-                Paso <span id="current-step">1</span> de <span id="total-steps">3</span>
-            </div>
-        </aside>
+        <!-- Botón Anterior Flotante -->
+        <button id="btn-prev" class="nav-btn floating-prev" disabled>
+            <span class="arrow">◀</span> Anterior
+        </button>
 
-        <!-- Área Principal (Aprox. 70% del espacio visual total) -->
-        <main class="content-area">
-            <!-- Panel izquierdo: Imagen -->
-            <div class="glass-panel image-panel">
-                <img id="step-image" src="fotos/woman-airport-service-agent-with-passport-helping-traveler-check-terminal-counter-female-passenger-assistant-with-smile-travel-security-immigration-documents-airline-control.jpg" alt="Agente de servicio en el aeropuerto">
+        <!-- Columna Izquierda (Avatar, Título, Texto) -->
+        <div class="left-column">
+            <!-- Fila Superior: Avatar + Título -->
+            <div class="header-row">
+                <!-- Avatar rediseñado (Squircle) con Barra de progreso -->
+                <div class="avatar-squircle-wrapper glass-panel">
+                    <svg class="progress-svg" width="160" height="160">
+                        <!-- Rectángulo redondeado para el fondo -->
+                        <rect class="progress-rect__background" x="8" y="8" width="144" height="144" rx="35" ry="35" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="6"/>
+                        <!-- Rectángulo redondeado para el progreso -->
+                        <rect class="progress-rect" x="8" y="8" width="144" height="144" rx="35" ry="35" fill="none" stroke="#ffb800" stroke-width="6" stroke-linecap="round"/>
+                    </svg>
+                    <img src="avatar/avatar.png" alt="Avatar del usuario" class="avatar-image-squircle">
+                </div>
+                
+                <!-- Panel del Título -->
+                <div class="title-panel glass-panel">
+                    <h1 id="step-title">Servicio de control de fauna del aeropuerto trabaja en el lado aire para minimizar</h1>
+                </div>
             </div>
             
-            <!-- Panel derecho: Texto y controles -->
-            <div class="glass-panel text-panel">
+            <!-- Fila Inferior: Texto -->
+            <div class="text-panel glass-panel">
                 <p id="step-text">
                     Las compañías aéreas marcan una serie de procedimientos para atender sus aviones que cumplen con lo establecido por las organizaciones en cuanto a la seguridad operacional.
                 </p>
-                
-                <div class="navigation-controls">
-                    <button id="btn-prev" class="nav-btn" disabled>Anterior</button>
-                    <button id="btn-next" class="nav-btn btn-primary">Siguiente</button>
+                <div class="progress-text">
+                    Paso <span id="current-step">1</span> de <span id="total-steps">3</span>
                 </div>
             </div>
-        </main>
+        </div>
+
+        <!-- Columna Derecha (Imagen y Botón Siguiente) -->
+        <div class="right-column">
+            <!-- Panel de Imagen -->
+            <div class="image-panel glass-panel">
+                <img id="step-image" src="fotos/woman-airport-service-agent-with-passport-helping-traveler-check-terminal-counter-female-passenger-assistant-with-smile-travel-security-immigration-documents-airline-control.jpg" alt="Agente de servicio en el aeropuerto">
+            </div>
+            
+            <!-- Botón Siguiente -->
+            <button id="btn-next" class="nav-btn btn-primary glass-panel">Siguiente</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
